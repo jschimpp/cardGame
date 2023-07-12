@@ -1,0 +1,27 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div>
+  <h3>Player {{turn}}'s turn</h3>
+  <p>Player 1 Score: {{playerOnePoints}}</p>
+  <p>Player 1 Score: {{playerTwoPoints}}</p>
+    <div *ngIf="gameCompleted === true">
+      <button (click)="refreshPage()">New Game</button>
+    </div>
+    <div class="cards">
+      <div *ngFor='let item of cards'>
+        <div *ngIf="firstCard==item || secondCard==item; else faceDown">
+          <img [src]='item' />
+        </div>
+        <ng-template #faceDown>
+          <img [src]='backOfCard' (click)="showCard(item)" />
+        </ng-template>
+      </div>
+    </div>
+</div>
