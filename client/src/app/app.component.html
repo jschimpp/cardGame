@@ -8,7 +8,10 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <div>
-  <h3>Player {{turn}}'s turn</h3>
+  <div class="head">
+    <h3>Player {{turn}}'s turn</h3>
+    <p class="pair" *ngIf="isPair===true">Pair Found!</p>
+  </div>
   <p>Player 1 Score: {{playerOnePoints}}</p>
   <p>Player 1 Score: {{playerTwoPoints}}</p>
     <div *ngIf="gameCompleted === true">

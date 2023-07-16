@@ -15,31 +15,33 @@ export class AppComponent {
   playerOnePoints = 0;
   playerTwoPoints = 0;
 
+  isPair = false;
+
   gameCompleted = false;
 
   turn: 1 | 2 = 1;
 
   cards: string[] = [
-    '../assets/photos/2C.jpg',
-    '../assets/photos/2D.jpg',
-    '../assets/photos/3C.jpg',
-    '../assets/photos/3D.jpg',
-    '../assets/photos/4C.jpg',
-    '../assets/photos/4D.jpg',
-    '../assets/photos/5C.jpg',
-    '../assets/photos/5D.jpg',
-    '../assets/photos/6C.jpg',
-    '../assets/photos/6D.jpg',
-    '../assets/photos/7C.jpg',
-    '../assets/photos/7D.jpg',
-    '../assets/photos/8C.jpg',
-    '../assets/photos/8D.jpg',
-    '../assets/photos/9C.jpg',
-    '../assets/photos/9D.jpg',
-    '../assets/photos/10C.jpg',
-    '../assets/photos/10D.jpg',
-    '../assets/photos/JC.jpg',
-    '../assets/photos/JD.jpg',
+    '../assets/photos/2C1.jpg',
+    '../assets/photos/2C2.jpg',
+    '../assets/photos/3C1.jpg',
+    '../assets/photos/3C2.jpg',
+    '../assets/photos/4C1.jpg',
+    '../assets/photos/4C2.jpg',
+    '../assets/photos/5C1.jpg',
+    '../assets/photos/5C2.jpg',
+    '../assets/photos/6C1.jpg',
+    '../assets/photos/6C2.jpg',
+    '../assets/photos/7C1.jpg',
+    '../assets/photos/7C2.jpg',
+    '../assets/photos/8C1.jpg',
+    '../assets/photos/8C2.jpg',
+    '../assets/photos/9C1.jpg',
+    '../assets/photos/9C2.jpg',
+    '../assets/photos/10C1.jpg',
+    '../assets/photos/10C2.jpg',
+    '../assets/photos/JC1.jpg',
+    '../assets/photos/JC2.jpg',
   ];
 
  constructor(private location: Location) {
@@ -71,8 +73,13 @@ export class AppComponent {
   compareCards() {
     console.log(this.firstCard[this.firstCard.length-6])
     console.log(this.secondCard)
-    if (this.firstCard[this.firstCard.length-6] === this.secondCard[this.secondCard.length-6]) {
-      alert('Pair Found!')
+    let pairFound = this.firstCard[this.firstCard.length-7] === this.secondCard[this.secondCard.length-7];
+    if (pairFound) {
+      // alert('Pair Found!')
+      this.isPair = true;
+      setTimeout(() => {
+        this.isPair = false;
+      }, 500);
       this.cards.splice(this.cards.indexOf(this.firstCard), 1);
       this.cards.splice(this.cards.indexOf(this.secondCard), 1);
       if (this.turn === 1) {
@@ -84,7 +91,7 @@ export class AppComponent {
         this.gameCompleted=true;
       }
     } else {
-      alert('Not a pair!')
+      // alert('Not a pair!')
     }
     this.firstCard='';
     this.secondCard='';

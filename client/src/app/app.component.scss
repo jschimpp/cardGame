@@ -4,6 +4,16 @@
     flex-wrap: wrap;
 }
 
+.head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pair {
+    margin-right: 10px;
+}
+
 img {
     width: 120px;
 }
